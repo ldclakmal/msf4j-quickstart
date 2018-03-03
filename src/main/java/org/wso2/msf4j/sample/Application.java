@@ -17,11 +17,40 @@
  */
 package org.wso2.msf4j.sample;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.wso2.msf4j.MicroservicesRunner;
+import org.wso2.msf4j.util.SystemVariableUtil;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 public class Application {
 
+    private static final Logger logger = LoggerFactory.getLogger(Application.class);
+    private static final Path CONF_PATH = Paths.get(SystemVariableUtil.getValue("user.dir", "/home/wso2") + "/conf/transports/");
+    private static final String NETTY_TRANSPORT_CONF = "netty-transports.yml";
+
     public static void main(String[] args) {
+
+        Path confFilePath = CONF_PATH.resolve(Paths.get(NETTY_TRANSPORT_CONF));
+        InputStream inputStream = Application.class.getResourceAsStream(File.separator + NETTY_TRANSPORT_CONF);
+        try {
+            Files.createDirectories(CONF_PATH);
+            Files.copy(inputStream, confFilePath, StandardCopyOption.REPLACE_EXISTING);
+            logger.debug("Copied resource {} into {}", NETTY_TRANSPORT_CONF, confFilePath);
+        } catch (IOException e) {
+            logger.error("Failed to create and copy resource to {}", confFilePath);
+        }
+
+        System.setProperty("transports.netty.conf", CONF_PATH.resolve(NETTY_TRANSPORT_CONF).toString());
+        logger.info("Set system properties before start microservice");
+
         new MicroservicesRunner()
                 .deploy(new RestHandler())
                 .start();
