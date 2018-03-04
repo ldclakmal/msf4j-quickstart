@@ -15,4 +15,11 @@
     <version>1.0-SNAPSHOT</version>
     <name>msf4j-sample</name>
 
+    <build>
+        <finalName>msf4j-sample</finalName>
+    </build>
+
+    <!--<properties>-->
+    <!--<microservice.mainClass>org.wso2.msf4j.sample.Application</microservice.mainClass>-->
+    <!--</properties>-->
 </project>
