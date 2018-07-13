@@ -19,7 +19,7 @@
         <finalName>msf4j-sample</finalName>
     </build>
 
-    <!--<properties>-->
-    <!--<microservice.mainClass>org.wso2.msf4j.sample.Application</microservice.mainClass>-->
-    <!--</properties>-->
+    <properties>
+        <microservice.mainClass>org.wso2.msf4j.sample.Application</microservice.mainClass>
+    </properties>
 </project>

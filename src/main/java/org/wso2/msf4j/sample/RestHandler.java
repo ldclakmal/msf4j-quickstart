@@ -26,6 +26,6 @@ public class RestHandler {
     @GET
     @Path("/")
     public String root() {
-        return "SUCCESS - MSF4J SAMPLE";
+        return "Hello MSF4J !";
     }
 }
