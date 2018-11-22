@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
-        <groupId>lk.avix.ldclakmal</groupId>
+        <groupId>org.wso2.msf4j</groupId>
         <artifactId>msf4j-service</artifactId>
         <version>2.4.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.wso2</groupId>
+    <groupId>lk.avix</groupId>
     <artifactId>msf4j-sample</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>msf4j-sample</name>
@@ -20,6 +20,6 @@
     </build>
 
     <properties>
-        <microservice.mainClass>org.wso2.msf4j.sample.Application</microservice.mainClass>
+        <microservice.mainClass>lk.avix.msf4j.sample.Application</microservice.mainClass>
     </properties>
 </project>
